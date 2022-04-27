@@ -17,38 +17,39 @@ const Fav = ({ characters, favouriteComponent, handleWishClick }) => {
       >
         <div className="app-container">
           <div className="all-container">
-            {favList.map((character, index) => (
-              <div key={index} className="thumb-container">
-                <Card sx={{ minWidth: 160 }}>
-                  <CardMedia
-                    component="img"
-                    height="300"
-                    image={character.image}
-                    alt=""
-                  />
-                  <CardContent>
-                    <Typography gutterBottom variant="h5" component="div">
-                      {character.name}
-                    </Typography>
-                    <Typography
-                      variant="body2"
-                      color="text.secondary"
-                      component={"span"}
+            {favList &&
+              favList.map((character, index) => (
+                <div key={index} className="thumb-container">
+                  <Card sx={{ minWidth: 160 }}>
+                    <CardMedia
+                      component="img"
+                      height="300"
+                      image={character.image}
+                      alt=""
+                    />
+                    <CardContent>
+                      <Typography gutterBottom variant="h5" component="div">
+                        {character.name}
+                      </Typography>
+                      <Typography
+                        variant="body2"
+                        color="text.secondary"
+                        component={"span"}
+                      >
+                        <p> Gender: {character.gender}</p>
+                        <p> Species: {character.species}</p>
+                      </Typography>
+                    </CardContent>
+                    <div
+                      className="overlay"
+                      style={{ justifyContent: "center", width: "100%" }}
+                      onClick={() => handleWishClick(character)}
                     >
-                      <p> Gender: {character.gender}</p>
-                      <p> Species: {character.species}</p>
-                    </Typography>
-                  </CardContent>
-                  <div
-                    className="overlay"
-                    style={{ justifyContent: "center", width: "100%" }}
-                    onClick={() => handleWishClick(character)}
-                  >
-                    <FavouriteComponent />
-                  </div>
-                </Card>
-              </div>
-            ))}
+                      <FavouriteComponent />
+                    </div>
+                  </Card>
+                </div>
+              ))}
           </div>
         </div>
       </motion.div>
